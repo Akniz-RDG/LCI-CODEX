@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitácora Valorant</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <header>
+    <h1>Bitácora de Entrenamiento - Valorant</h1>
+    <p>Controla tus hábitos, objetivos y métricas en un solo lugar.</p>
+    <nav>
+      <button data-section="registro">Registro</button>
+      <button data-section="smart">Objetivos SMART</button>
+      <button data-section="tareas">Tareas</button>
+      <button data-section="datos">Datos del jugador</button>
+      <button data-section="test">Tests psicológicos</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="registro" class="panel active">
+      <header class="panel-header">
+        <h2>Registro diario / semanal</h2>
+        <button class="video" data-video="registro">Ver guía</button>
+      </header>
+      <form id="registro-form">
+        <div class="grid-2">
+          <label>
+            Fecha
+            <input type="date" name="fecha" required>
+          </label>
+          <label>
+            Sensación (0-10)
+            <input type="number" name="sensacion" min="0" max="10" required>
+          </label>
+        </div>
+        <label>
+          Tareas realizadas
+          <textarea name="tareas" rows="3" required></textarea>
+        </label>
+        <label>
+          Observaciones / reflexiones
+          <textarea name="observaciones" rows="3"></textarea>
+        </label>
+        <label>
+          Video de referencia
+          <input type="url" name="video" placeholder="https://">
+        </label>
+        <button type="submit">Guardar registro</button>
+      </form>
+      <ul id="registro-lista" class="cards"></ul>
+    </section>
+
+    <section id="smart" class="panel">
+      <header class="panel-header">
+        <h2>Objetivos SMART</h2>
+        <button class="video" data-video="smart">Ver guía</button>
+      </header>
+      <form id="smart-form">
+        <label>Descripción
+          <input type="text" name="descripcion" required>
+        </label>
+        <label>Indicador de éxito
+          <input type="text" name="indicador" required>
+        </label>
+        <div class="grid-2">
+          <label>Fecha límite
+            <input type="date" name="fecha" required>
+          </label>
+          <label>Etiqueta (rol/mapa/mecánica)
+            <input type="text" name="etiqueta">
+          </label>
+        </div>
+        <label>Relevancia personal
+          <textarea name="relevancia" rows="2"></textarea>
+        </label>
+        <label>Estado
+          <select name="estado">
+            <option value="pendiente">Pendiente</option>
+            <option value="progreso">En progreso</option>
+            <option value="logrado">Logrado</option>
+          </select>
+        </label>
+        <button type="submit">Añadir objetivo</button>
+      </form>
+      <ul id="smart-lista" class="cards"></ul>
+    </section>
+
+    <section id="tareas" class="panel">
+      <header class="panel-header">
+        <h2>Tareas específicas</h2>
+        <button class="video" data-video="tareas">Ver guía</button>
+      </header>
+      <form id="tareas-form">
+        <div class="grid-2">
+          <label>Nombre
+            <input type="text" name="nombre" required>
+          </label>
+          <label>Día asignado
+            <input type="date" name="dia">
+          </label>
+        </div>
+        <label>Tipo de tarea
+          <select name="tipo">
+            <option value="aim">Aim</option>
+            <option value="comunicacion">Comunicación</option>
+            <option value="utilidad">Utilidad</option>
+            <option value="teoria">Teoría</option>
+            <option value="vod">VOD Review</option>
+          </select>
+        </label>
+        <label>Descripción
+          <textarea name="descripcion" rows="2"></textarea>
+        </label>
+        <label>Video guía
+          <input type="url" name="video" placeholder="https://">
+        </label>
+        <button type="submit">Guardar tarea</button>
+      </form>
+      <ul id="tareas-lista" class="cards"></ul>
+    </section>
+
+    <section id="datos" class="panel">
+      <header class="panel-header">
+        <h2>Datos del jugador</h2>
+        <button class="video" data-video="datos">Ver guía</button>
+      </header>
+      <form id="datos-form">
+        <div class="grid-2">
+          <label>Nickname / Rango
+            <input type="text" name="nickname" required>
+          </label>
+          <label>Rol principal
+            <input type="text" name="rol">
+          </label>
+        </div>
+        <div class="grid-3">
+          <label>Agente principal
+            <input type="text" name="agente">
+          </label>
+          <label>Winrate (%)
+            <input type="number" name="winrate" min="0" max="100">
+          </label>
+          <label>KDA promedio
+            <input type="text" name="kda">
+          </label>
+        </div>
+        <label>Mapas débiles
+          <input type="text" name="mapas">
+        </label>
+        <label>Percepción de debilidades
+          <textarea name="debilidades" rows="2"></textarea>
+        </label>
+        <button type="submit">Actualizar datos</button>
+      </form>
+      <div id="datos-resumen" class="cards"></div>
+    </section>
+
+    <section id="test" class="panel">
+      <header class="panel-header">
+        <h2>Tests psicológicos</h2>
+      </header>
+      <div class="test-grid">
+        <article>
+          <h3>POMPS</h3>
+          <p>Evalúa tu estado de ánimo previo a la práctica.</p>
+          <button class="test-btn" data-test="POMPS">Registrar</button>
+        </article>
+        <article>
+          <h3>CSAI-2</h3>
+          <p>Mide autoconfianza y ansiedad competitiva.</p>
+          <button class="test-btn" data-test="CSAI-2">Registrar</button>
+        </article>
+        <article>
+          <h3>CPRD</h3>
+          <p>Conoce tu preparación psicológica integral.</p>
+          <button class="test-btn" data-test="CPRD">Registrar</button>
+        </article>
+      </div>
+      <section class="test-form" hidden>
+        <form id="test-form">
+          <h3 id="test-titulo"></h3>
+          <label>Resultado / puntaje
+            <input type="number" name="resultado" min="0" required>
+          </label>
+          <label>Notas
+            <textarea name="notas" rows="2"></textarea>
+          </label>
+          <button type="submit">Guardar test</button>
+          <button type="button" id="test-cancelar">Cancelar</button>
+        </form>
+      </section>
+      <ul id="test-lista" class="cards"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <small>Datos guardados localmente en tu navegador.</small>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

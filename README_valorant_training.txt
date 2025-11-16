@@ -1,148 +1,75 @@
-
 # 📔 Valorant Player Logbook
 
-Una bitácora digital para jugadores de Valorant que permite registrar entrenamientos, prácticas, tareas y objetivos SMART, todo basado en evidencia. Incluye soporte para enlaces a videos guía en cada sección.
+Bitácora offline para planificar entrenamientos, hacer seguimiento de objetivos SMART, registrar tareas técnicas y almacenar datos clave del jugador con resultados psicológicos básicos. Toda la información vive en `localStorage`, por lo que basta con abrir `index.html` en cualquier navegador moderno.
 
 ---
 
-## 🚀 Objetivo
+## 🚀 ¿Qué se incluye?
 
-Desarrollar una app web local, completamente offline, que permita al jugador de Valorant llevar un control estructurado de su entrenamiento, rendimiento y progreso psicológico/técnico.
-
----
-
-## 📋 Funcionalidades
-
-1. Registro diario/semanal de actividades y reflexiones.
-2. Creación de objetivos SMART personalizados.
-3. Listado de tareas organizadas por tipo (aim, mapas, utilidad, teoría).
-4. Registro de estadísticas y datos clave del jugador.
-5. Enlace opcional a un video tutorial explicativo por cada módulo.
+- **Dashboard único (`index.html`)** con navegación por secciones.
+- **Estilos modernos** (`styles/main.css`) con modo oscuro responsivo.
+- **Módulos JavaScript** para cada bloque funcional (`js/*.js`).
+- **Persistencia local** para registros, objetivos, tareas, datos personales y tests (POMPS, CSAI-2, CPRD).
+- **Botones de guía en video** por sección para abrir tutoriales sugeridos.
 
 ---
 
-## 🗂️ Estructura del Proyecto
+## 🗂️ Estructura
 
 ```
 valorant-bitacora/
-├── index.html                # Dashboard principal
+├── index.html
 ├── styles/
-│   └── main.css              # Estilos generales
-├── js/
-│   ├── main.js               # Navegación y eventos globales
-│   ├── registro.js           # Registro diario/semanal
-│   ├── smart.js              # Objetivos SMART
-│   ├── tareas.js             # Tareas programadas y ejecutadas
-│   ├── datos.js              # Información del jugador
-│   └── videos.js             # Sistema de ayuda en video
-└── README.md                 # Documentación técnica
+│   └── main.css
+└── js/
+    ├── main.js        # Inicializa navegación y tests
+    ├── registro.js    # Registro diario/semanal
+    ├── smart.js       # Objetivos SMART
+    ├── tareas.js      # Gestión de tareas
+    ├── datos.js       # Perfil del jugador
+    ├── videos.js      # Abre los tutoriales
+    └── storage.js     # Helper de persistencia
 ```
 
 ---
 
-## ✍️ Registro de actividades (registro.js)
+## ✍️ Registro de actividades
 
-Cada entrada incluye:
-- Fecha
-- Tareas realizadas
-- Observaciones o reflexiones
-- Sensación subjetiva del día (0 a 10)
-- Enlace a video explicativo de cómo usar esta sección
+- Guarda fecha, sensación subjetiva, tareas realizadas, observaciones y video de referencia.
+- Lista ordenada cronológicamente con opción de eliminar entradas antiguas.
 
----
+## 🎯 Objetivos SMART
 
-## 🎯 Objetivos SMART (smart.js)
+- Define descripción, indicador, fecha límite, relevancia, etiqueta y estado.
+- Cambia el estado con un clic (pendiente → progreso → logrado) y elimina objetivos cumplidos.
 
-Cada objetivo contiene:
-- Descripción clara
-- Indicador de éxito (cómo saber si se logró)
-- Fecha límite
-- Relevancia personal
-- Estado actual (pendiente, en progreso, logrado)
+## ✅ Tareas específicas
 
-Opcional: etiqueta (rol, mapa, agente, mecánica)
+- Clasifica por tipo (aim, comunicación, utilidad, teoría, VOD) y asigna día opcional.
+- Botón para marcar completadas y ordenar pendientes primero.
 
----
+## 📊 Datos del jugador
 
-## ✅ Tareas específicas (tareas.js)
+- Formulario para nickname/rango, rol, agente, winrate, KDA, mapas débiles y debilidades subjetivas.
+- El resumen se actualiza en tiempo real tras guardar.
 
-Funcionalidad para:
-- Añadir, editar y eliminar tareas
-- Marcar tareas como completadas
-- Categorizar por tipo (aim, comunicación, utilidad, teoría, VOD)
-- Asignar a días específicos
-- Incluir video guía por tipo de tarea
+## 🧠 Tests psicológicos
 
----
-
-## 📊 Datos del jugador (datos.js)
-
-Campos disponibles:
-- Nickname / Rango actual
-- Agente principal y % de winrate
-- Mapas débiles
-- KDA promedio
-- Rol principal
-- Percepción subjetiva de debilidades
-
-
-## 📊 Hacer test psicológicos
-- Realizar test POMPS
-- Realizar test CSAI-2
-- Realizar test CPRD
-- Descargar informe de resultados
-
----
-
-## 🎥 Videos por sección (videos.js)
-
-```js
-const videos = {
-  "registro": "https://youtu.be/tutorial-registro",
-  "smart": "https://youtu.be/tutorial-smart",
-  "tareas": "https://youtu.be/tutorial-tareas",
-  "datos": "https://youtu.be/tutorial-datos"
-};
-
-function verVideo(seccion) {
-  window.open(videos[seccion], "_blank");
-}
-```
-
----
-
-## 🧰 Tecnologías utilizadas
-
-- HTML5
-- CSS3
-- JavaScript modular
-- `localStorage` para persistencia local
-- Diseño responsivo
+- Botones rápidos para registrar puntuaciones de POMPS, CSAI-2 o CPRD.
+- Guardado con fecha automática y opción de eliminar.
 
 ---
 
 ## 🌐 Uso
 
-- Abrir `index.html` en cualquier navegador moderno.
-- No requiere instalación ni conexión a internet.
-- Los datos se guardan localmente en el navegador del usuario.
+1. Clona el repositorio o descarga los archivos.
+2. Abre `index.html` en tu navegador.
+3. Añade tus datos y deja que el navegador recuerde todo vía `localStorage` (no se envía nada a internet).
 
----
-
-## 🧩 Futuras mejoras
-
-- Exportar bitácora completa a PDF o HTML
-- Filtrado por categorías y fechas
-- Sincronización opcional con nube
-- Validación automática de progresos SMART
-- Traductor ES/EN
+> Sugerencia: exporta periódicamente el `localStorage` o imprime la página para conservar respaldos.
 
 ---
 
 ## 📣 Autor
 
-**Rodrigo Figueroa**  
-Psicólogo deportivo y programador fullstack en formación.  
-Especializado en intervención en Esports y desarrollo de herramientas digitales basadas en evidencia.
-
----
+**Rodrigo Figueroa** – Psicólogo deportivo y programador fullstack en formación.
